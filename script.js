@@ -1,4 +1,15 @@
 function generarCaja() {
+  let modelo = document.getElementById("modelo").value;
+
+if (modelo === "sobre") {
+    alert("Próximamente: generador de sobres");
+    return;
+}
+
+if (modelo === "etiqueta") {
+    alert("Próximamente: generador de etiquetas");
+    return;
+}
 
   let w = Number(document.getElementById("ancho").value);
   let h = Number(document.getElementById("alto").value);
