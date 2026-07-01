@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CutBox Studio</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CutBox Studio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1>CutBox Studio</h1>
+  <main class="app">
+    <h1>CutBox Studio</h1>
+    <p class="subtitulo">Generador SVG para Brother ScanNCut</p>
 
-<p>Generador de plantillas SVG para Brother</p>
+    <section class="panel">
+      <label>Ancho (mm)</label>
+      <input id="ancho" type="number" value="60">
 
-<label>Ancho (mm)</label>
-<input id="ancho" type="number" value="60">
+      <label>Alto (mm)</label>
+      <input id="alto" type="number" value="80">
 
-<label>Alto (mm)</label>
-<input id="alto" type="number" value="80">
+      <label>Profundidad (mm)</label>
+      <input id="prof" type="number" value="30">
 
-<label>Profundidad (mm)</label>
-<input id="prof" type="number" value="30">
+      <button onclick="generarCaja()">Generar caja</button>
+    </section>
 
-<br><br>
+    <section id="resultado"></section>
+  </main>
 
-<button onclick="generarCaja()">
-Generar Caja
-</button>
-
-<div id="resultado"></div>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
