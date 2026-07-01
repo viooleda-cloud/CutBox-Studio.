@@ -36,7 +36,6 @@ ${x+w+d},${y+h-10}"/>
 </g>
 
 </svg>`;
-
 document.getElementById("resultado").innerHTML =
 svg +
 '<br><br><a class="descarga" download="caja_cutbox.svg" href="data:image/svg+xml;charset=utf-8,' +
