@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CutBox Studio V2</title>
+  <title>CutBox Studio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <main class="app">
-  <header>
+  <header class="header">
     <h1>CutBox Studio</h1>
     <p>Generador SVG para Brother ScanNCut</p>
   </header>
 
   <section class="panel">
-    <label>Modelo</label>
+    <label>Tipo de plantilla</label>
     <select id="modelo">
       <option value="caja-simple">Caja simple</option>
+      <option value="caja-tapa">Caja con tapa</option>
       <option value="sobre">Sobre profesional</option>
       <option value="etiqueta-rect">Etiqueta rectangular</option>
       <option value="etiqueta-redonda">Etiqueta redonda</option>
@@ -32,14 +33,18 @@
     <label>Profundidad / solapa (mm)</label>
     <input id="prof" type="number" value="30">
 
-    <button onclick="generar()">Generar SVG</button>
+    <button onclick="generarPlantilla()">Generar SVG</button>
   </section>
 
   <section id="resultado" class="resultado">
-    <p>Elegí un modelo y tocá generar.</p>
+    <p>Elegí una plantilla y tocá generar.</p>
   </section>
 </main>
 
-<script src="script.js?v=10"></script>
+<script src="svg.js?v=1"></script>
+<script src="modelos.js?v=1"></script>
+<script src="exportar.js?v=1"></script>
+<script src="app.js?v=1"></script>
+
 </body>
 </html>
