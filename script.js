@@ -17,7 +17,6 @@ let svg = `
 <rect x="${x+w}" y="${y}" width="${d}" height="${h}"/>
 <rect x="${x}" y="${y-d}" width="${w}" height="${d}"/>
 <rect x="${x}" y="${y+h}" width="${w}" height="${d}"/>
-
 <polygon points="${x+w+d},${y+10} ${x+w+d+solapa},${y+18} ${x+w+d+solapa},${y+h-18} ${x+w+d},${y+h-10}"/>
 </g>
 
@@ -26,7 +25,6 @@ let svg = `
 <line x1="${x}" y1="${y+h}" x2="${x+w}" y2="${y+h}"/>
 <line x1="${x}" y1="${y}" x2="${x}" y2="${y+h}"/>
 <line x1="${x+w}" y1="${y}" x2="${x+w}" y2="${y+h}"/>
-<line x1="${x+w+d}" y1="${y+10}" x2="${x+w+d}" y2="${y+h-10}"/>
 </g>
 
 </svg>`;
