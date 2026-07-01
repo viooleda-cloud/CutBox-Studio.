@@ -3,35 +3,44 @@ function generarCaja() {
 
 if (modelo === "sobre") {
 
+let w = Number(document.getElementById("ancho").value);
+let h = Number(document.getElementById("alto").value);
+
+let x = 55;
+let y = 90;
+let lateral = 28;
+let solapaSup = 42;
+let solapaInf = 32;
+
 let svg = `
-<svg xmlns="http://www.w3.org/2000/svg"
-width="210mm"
-height="297mm"
-viewBox="0 0 210 297">
+<svg xmlns="http://www.w3.org/2000/svg" width="210mm" height="297mm" viewBox="0 0 210 297">
 
 <g fill="none" stroke="black" stroke-width="0.3">
+<rect x="${x}" y="${y}" width="${w}" height="${h}"/>
 
-<rect x="55" y="70" width="100" height="70"/>
+<polygon points="${x},${y} ${x+w/2},${y-solapaSup} ${x+w},${y}"/>
+<polygon points="${x},${y+h} ${x+w/2},${y+h+solapaInf} ${x+w},${y+h}"/>
 
-<polygon points="55,70 105,35 155,70"/>
+<polygon points="${x},${y} ${x-lateral},${y+h/2} ${x},${y+h}"/>
+<polygon points="${x+w},${y} ${x+w+lateral},${y+h/2} ${x+w},${y+h}"/>
+</g>
 
-<polygon points="55,140 105,105 155,140"/>
-
-<line x1="55" y1="70" x2="55" y2="140"/>
-<line x1="155" y1="70" x2="155" y2="140"/>
-
+<g fill="none" stroke="red" stroke-width="0.25" stroke-dasharray="3 2">
+<line x1="${x}" y1="${y}" x2="${x+w}" y2="${y}"/>
+<line x1="${x}" y1="${y+h}" x2="${x+w}" y2="${y+h}"/>
+<line x1="${x}" y1="${y}" x2="${x}" y2="${y+h}"/>
+<line x1="${x+w}" y1="${y}" x2="${x+w}" y2="${y+h}"/>
 </g>
 
 </svg>`;
 
 document.getElementById("resultado").innerHTML =
 svg +
-"<br><a download='sobre.svg' href='data:image/svg+xml;charset=utf-8," +
+"<br><a download='sobre_cutbox.svg' href='data:image/svg+xml;charset=utf-8," +
 encodeURIComponent(svg) +
 "'>📥 Descargar SVG</a>";
 
 return;
-
 }
 
 if (modelo === "etiqueta") {
