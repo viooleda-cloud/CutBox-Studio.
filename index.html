@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CutBox Studio</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<h1>CutBox Studio</h1>
+
+<p>Generador de plantillas SVG para Brother</p>
+
+<label>Ancho (mm)</label>
+<input id="ancho" type="number" value="60">
+
+<label>Alto (mm)</label>
+<input id="alto" type="number" value="80">
+
+<label>Profundidad (mm)</label>
+<input id="prof" type="number" value="30">
+
+<br><br>
+
+<button onclick="generarCaja()">
+Generar Caja
+</button>
+
+<div id="resultado"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
