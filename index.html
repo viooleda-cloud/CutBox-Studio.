@@ -3,37 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CutBox Studio</title>
+  <title>CutBox Studio V2</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <main class="app">
+<main class="app">
+  <header>
     <h1>CutBox Studio</h1>
-    <p class="subtitulo">Generador SVG para Brother ScanNCut</p>
+    <p>Generador SVG para Brother ScanNCut</p>
+  </header>
 
-    <section class="panel">
-      <label>Modelo</label>
-<select id="modelo">
-  <option value="caja-simple">Caja simple</option>
-  <option value="sobre">Sobre</option>
-  <option value="etiqueta">Etiqueta</option>
-</select>
-      <label>Ancho (mm)</label>
-      <input id="ancho" type="number" value="60">
+  <section class="panel">
+    <label>Modelo</label>
+    <select id="modelo">
+      <option value="caja-simple">Caja simple</option>
+      <option value="sobre">Sobre profesional</option>
+      <option value="etiqueta-rect">Etiqueta rectangular</option>
+      <option value="etiqueta-redonda">Etiqueta redonda</option>
+    </select>
 
-      <label>Alto (mm)</label>
-      <input id="alto" type="number" value="80">
+    <label>Ancho (mm)</label>
+    <input id="ancho" type="number" value="60">
 
-      <label>Profundidad (mm)</label>
-      <input id="prof" type="number" value="30">
+    <label>Alto (mm)</label>
+    <input id="alto" type="number" value="80">
 
-      <button onclick="generarCaja()">Generar caja</button>
-    </section>
+    <label>Profundidad / solapa (mm)</label>
+    <input id="prof" type="number" value="30">
 
-    <section id="resultado"></section>
-  </main>
+    <button onclick="generar()">Generar SVG</button>
+  </section>
 
- <script src="script.js?v=3"></script>
+  <section id="resultado" class="resultado">
+    <p>Elegí un modelo y tocá generar.</p>
+  </section>
+</main>
+
+<script src="script.js?v=10"></script>
 </body>
 </html>
