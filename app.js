@@ -11,5 +11,6 @@ function generarPlantilla(){
   if(modelo==="etiqueta-rect"){svg=etiquetaRect(ancho,alto);nombre="etiqueta_rectangular_cutbox";}
   if(modelo==="etiqueta-redonda"){svg=etiquetaRedonda(ancho);nombre="etiqueta_redonda_cutbox";}
   if(modelo==="pillow"){svg=cajaAlmohada(ancho,alto,prof);nombre="caja_almohada_cutbox";}
+  if(modelo==="auto"){svg=cajaAutomontable(ancho,alto,prof);nombre="caja_automontable_cutbox";}
   mostrarSVG(svg,nombre);
 }
