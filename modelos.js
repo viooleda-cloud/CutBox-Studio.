@@ -118,3 +118,6 @@ function cajaAlmohada(w,h,d){
 
   return svgInicio()+corte(cut)+pliegue(fold)+svgFin();
 }
+function cajaAutomontable(w,h,d){
+  return cajaConTapa(w,h,d);
+}
