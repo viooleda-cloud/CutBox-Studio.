@@ -1,59 +1,15 @@
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-}
-
-.app{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
-
-.header{
-    margin-bottom:20px;
-}
-
-.header h1{
-    color:#5b2cff;
-    margin:0;
-}
-
-.panel{
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    display:grid;
-    gap:10px;
-}
-
-.panel input,
-.panel select,
-.panel button{
-    padding:10px;
-    font-size:16px;
-}
-
-.panel button{
-    background:#5b2cff;
-    color:#fff;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.resultado{
-    margin-top:20px;
-    background:#fff;
-    border-radius:12px;
-    padding:20px;
-    min-height:500px;
-    box-shadow:0 2px 10px rgba(0,0,0,.08);
-    overflow:auto;
-}
-
-svg{
-    max-width:100%;
-    height:auto;
-}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f3fb;color:#222}
+.app{max-width:1150px;margin:auto;padding:18px}
+.hero{background:linear-gradient(135deg,#5b2cff,#8f5bff);color:white;padding:22px;border-radius:18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.hero h1{margin:0;font-size:34px}.hero p{margin:6px 0 0}.badge{background:white;color:#5b2cff;padding:8px 12px;border-radius:999px;font-weight:bold}
+.layout{display:grid;grid-template-columns:320px 1fr;gap:18px}
+.panel,.resultado{background:white;border-radius:16px;box-shadow:0 3px 14px rgba(0,0,0,.10)}
+.panel{padding:18px;display:grid;gap:10px;align-self:start}
+label{font-weight:bold;font-size:14px}input,select{width:100%;padding:12px;border:1px solid #ccc;border-radius:10px;font-size:16px}
+button{margin-top:8px;padding:14px;border:0;border-radius:12px;background:#5b2cff;color:white;font-size:17px;font-weight:bold}
+.nota{font-size:13px;color:#666;margin:4px 0 0}.resultado{padding:18px;min-height:620px;overflow:auto}.vacio{color:#777}
+svg{max-width:100%;height:auto;background:#fff}
+.descarga{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:10px;background:#5b2cff;color:white;text-decoration:none;font-weight:bold}
+.info{margin-top:10px;color:#555;font-size:13px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.hero h1{font-size:26px}.app{padding:14px}.resultado{min-height:420px}}
