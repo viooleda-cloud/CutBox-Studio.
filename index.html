@@ -3,44 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CutBox Studio</title>
+  <title>CutBox Studio V10.10</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main class="app">
   <header class="hero">
     <div>
-      <h1>CutBox Studio</h1>
-      <p>Generador SVG para Brother ScanNCut · A4 · medidas en mm</p>
+      <h1>CutBox Studio <span>V10.10</span></h1>
+      <p>Generador SVG para Brother ScanNCut · A4 · Packaging · Sobres · Etiquetas</p>
     </div>
-    <span class="badge">V2.1</span>
+    <button class="ghost" onclick="resetear()">Reset</button>
   </header>
-  <section class="layout">
+
+  <section class="grid">
     <aside class="panel">
-      <label>Tipo de plantilla</label>
-      <select id="modelo">
-        <option value="caja-simple">Caja simple</option>
-        <option value="caja-tapa">Caja con tapa</option>
-        <option value="sobre">Sobre profesional</option>
-        <option value="etiqueta-rect">Etiqueta rectangular</option>
-        <option value="etiqueta-redonda">Etiqueta redonda</option>
-        <option value="pillow">Caja almohada</option>
-        <option value="auto">Caja automontable</option>
+      <label>Buscar plantilla</label>
+      <input id="busqueda" type="text" placeholder="Ej: taza, sobre, etiqueta" oninput="filtrarModelos()">
+
+      <label>Categoría</label>
+      <select id="categoria" onchange="filtrarModelos()">
+        <option value="todas">Todas</option>
+        <option value="cajas">Cajas</option>
+        <option value="sobres">Sobres</option>
+        <option value="etiquetas">Etiquetas</option>
+        <option value="regalos">Regalos</option>
       </select>
-      <label>Ancho (mm)</label><input id="ancho" type="number" value="60" min="10">
-      <label>Alto (mm)</label><input id="alto" type="number" value="80" min="10">
-      <label>Profundidad / solapa (mm)</label><input id="prof" type="number" value="30" min="5">
-      <button onclick="generarPlantilla()">Generar SVG</button>
-      <p class="nota">Negro = corte · Rojo punteado = pliegue</p>
+
+      <label>Plantilla</label>
+      <select id="modelo"></select>
+
+      <div class="medidas">
+        <label>Ancho (mm)</label>
+        <input id="ancho" type="number" value="70">
+
+        <label>Alto (mm)</label>
+        <input id="alto" type="number" value="90">
+
+        <label>Profundidad / solapa (mm)</label>
+        <input id="prof" type="number" value="30">
+      </div>
+
+      <button class="primary" onclick="generarPlantilla()">Generar SVG</button>
+
+      <div id="info" class="info">
+        Elegí una plantilla y generá el SVG.
+      </div>
     </aside>
-    <section id="resultado" class="resultado">
-      <p class="vacio">Elegí una plantilla y tocá generar.</p>
+
+    <section class="preview">
+      <div class="previewTop">
+        <h2>Vista previa A4</h2>
+        <span id="estado">Listo</span>
+      </div>
+      <div id="resultado" class="resultado">
+        <p class="empty">Todavía no generaste ninguna plantilla.</p>
+      </div>
     </section>
   </section>
 </main>
-<script src="svg.js?v=21"></script>
-<script src="modelos.js?v=21"></script>
-<script src="exportar.js?v=21"></script>
-<script src="app.js?v=21"></script>
+
+<script src="svg.js?v=1010"></script>
+<script src="modelos.js?v=1010"></script>
+<script src="exportar.js?v=1010"></script>
+<script src="app.js?v=1010"></script>
 </body>
 </html>
