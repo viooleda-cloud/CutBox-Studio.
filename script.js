@@ -2,8 +2,36 @@ function generarCaja() {
   let modelo = document.getElementById("modelo").value;
 
 if (modelo === "sobre") {
-    alert("Próximamente: generador de sobres");
-    return;
+
+let svg = `
+<svg xmlns="http://www.w3.org/2000/svg"
+width="210mm"
+height="297mm"
+viewBox="0 0 210 297">
+
+<g fill="none" stroke="black" stroke-width="0.3">
+
+<rect x="55" y="70" width="100" height="70"/>
+
+<polygon points="55,70 105,35 155,70"/>
+
+<polygon points="55,140 105,105 155,140"/>
+
+<line x1="55" y1="70" x2="55" y2="140"/>
+<line x1="155" y1="70" x2="155" y2="140"/>
+
+</g>
+
+</svg>`;
+
+document.getElementById("resultado").innerHTML =
+svg +
+"<br><a download='sobre.svg' href='data:image/svg+xml;charset=utf-8," +
+encodeURIComponent(svg) +
+"'>📥 Descargar SVG</a>";
+
+return;
+
 }
 
 if (modelo === "etiqueta") {
