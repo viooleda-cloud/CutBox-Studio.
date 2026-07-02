@@ -11,7 +11,7 @@
   <header class="hero">
     <div>
       <h1>CutBox Studio <span>V10.10</span></h1>
-      <p>Generador SVG para Brother ScanNCut · A4 · Packaging · Sobres · Etiquetas</p>
+      <p>Generador SVG para Brother ScanNCut · Packaging paramétrico</p>
     </div>
     <button class="ghost" onclick="resetear()">Reset</button>
   </header>
@@ -19,7 +19,7 @@
   <section class="grid">
     <aside class="panel">
       <label>Buscar plantilla</label>
-      <input id="busqueda" type="text" placeholder="Ej: taza, sobre, etiqueta" oninput="filtrarModelos()">
+      <input id="busqueda" type="text" placeholder="Ej: taza, vela, jabón" oninput="filtrarModelos()">
 
       <label>Categoría</label>
       <select id="categoria" onchange="filtrarModelos()">
@@ -33,21 +33,25 @@
       <label>Plantilla</label>
       <select id="modelo"></select>
 
-      <div class="medidas">
-        <label>Ancho (mm)</label>
-        <input id="ancho" type="number" value="70">
+      <label>Ancho (mm)</label>
+      <input id="ancho" type="number" value="70">
 
-        <label>Alto (mm)</label>
-        <input id="alto" type="number" value="90">
+      <label>Alto (mm)</label>
+      <input id="alto" type="number" value="90">
 
-        <label>Profundidad / solapa (mm)</label>
-        <input id="prof" type="number" value="30">
-      </div>
+      <label>Profundidad / solapa (mm)</label>
+      <input id="prof" type="number" value="30">
+
+      <label>Grosor material (mm)</label>
+      <input id="material" type="number" value="0.3" step="0.1">
+
+      <label>Kerf / compensación corte (mm)</label>
+      <input id="kerf" type="number" value="0" step="0.05">
 
       <button class="primary" onclick="generarPlantilla()">Generar SVG</button>
 
       <div id="info" class="info">
-        Elegí una plantilla y generá el SVG.
+        Base paramétrica: corte negro, pliegue rojo punteado.
       </div>
     </aside>
 
@@ -57,15 +61,15 @@
         <span id="estado">Listo</span>
       </div>
       <div id="resultado" class="resultado">
-        <p class="empty">Todavía no generaste ninguna plantilla.</p>
+        <p class="empty">Elegí una plantilla y tocá generar.</p>
       </div>
     </section>
   </section>
 </main>
 
-<script src="svg.js?v=1010"></script>
-<script src="modelos.js?v=1010"></script>
-<script src="exportar.js?v=1010"></script>
-<script src="app.js?v=1010"></script>
+<script src="svg.js?v=021"></script>
+<script src="modelos.js?v=021"></script>
+<script src="exportar.js?v=021"></script>
+<script src="app.js?v=021"></script>
 </body>
 </html>
