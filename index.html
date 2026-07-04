@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CutBox Studio V10.10</title>
+  <title>CutBox Studio v11 Estable</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main class="app">
   <header class="hero">
     <div>
-      <h1>CutBox Studio <span>V10.10</span></h1>
-      <p>Generador SVG para Brother ScanNCut · Packaging paramétrico</p>
+      <h1>CutBox Studio <span>v11 Estable</span></h1>
+      <p>Generador SVG para Brother ScanNCut · A4 · A3 · Carta · Legal · 12x12 · 12x24</p>
     </div>
     <button class="ghost" onclick="resetear()">Reset</button>
   </header>
@@ -33,6 +33,24 @@
       <label>Plantilla</label>
       <select id="modelo"></select>
 
+      <label>Tamaño de hoja</label>
+      <select id="tamHoja" onchange="toggleCustomSheet()">
+        <option value="A4">A4 210 × 297 mm</option>
+        <option value="A3">A3 297 × 420 mm</option>
+        <option value="LETTER">Carta 216 × 279 mm</option>
+        <option value="LEGAL">Legal 216 × 356 mm</option>
+        <option value="12x12">12 × 12 pulgadas</option>
+        <option value="12x24">12 × 24 pulgadas</option>
+        <option value="CUSTOM">Personalizado</option>
+      </select>
+
+      <div id="customSheet" class="customSheet">
+        <label>Ancho hoja (mm)</label>
+        <input id="sheetW" type="number" value="210">
+        <label>Alto hoja (mm)</label>
+        <input id="sheetH" type="number" value="297">
+      </div>
+
       <label>Ancho (mm)</label>
       <input id="ancho" type="number" value="70">
 
@@ -50,14 +68,12 @@
 
       <button class="primary" onclick="generarPlantilla()">Generar SVG</button>
 
-      <div id="info" class="info">
-        Base paramétrica: corte negro, pliegue rojo punteado.
-      </div>
+      <div id="info" class="info">Negro = corte · Rojo punteado = pliegue.</div>
     </aside>
 
     <section class="preview">
       <div class="previewTop">
-        <h2>Vista previa A4</h2>
+        <h2>Vista previa</h2>
         <span id="estado">Listo</span>
       </div>
       <div id="resultado" class="resultado">
@@ -67,30 +83,10 @@
   </section>
 </main>
 
-<script src="svg.js?v=021"></script>
-<script src="modelos.js?v=021"></script>
-<script src="exportar.js?v=021"></script>
-<script src="app.js?v=021"></script>
+<script src="autolayout.js?v=11"></script>
+<script src="svg.js?v=11"></script>
+<script src="modelos.js?v=11"></script>
+<script src="exportar.js?v=11"></script>
+<script src="app.js?v=11"></script>
 </body>
 </html>
-<!--
-ZIP 03.1
-Agregar este bloque dentro del panel de configuración.
-
-<label>Tamaño de hoja</label>
-<select id="tamHoja">
-<option value="A4">A4 (210x297)</option>
-<option value="A3">A3 (297x420)</option>
-<option value="LETTER">Carta</option>
-<option value="LEGAL">Legal</option>
-<option value="12x12">12 x 12 pulgadas</option>
-<option value="12x24">12 x 24 pulgadas</option>
-<option value="CUSTOM">Personalizado</option>
-</select>
-
-<div id="customSheet" style="display:none">
-<label>Ancho (mm)</label><input id="sheetW" value="210">
-<label>Alto (mm)</label><input id="sheetH" value="297">
-</div>
--->
-
