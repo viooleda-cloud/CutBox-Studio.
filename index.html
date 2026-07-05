@@ -1,101 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CutBox Studio v11.1</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main class="app">
-  <header class="hero">
-    <div>
-      <h1>CutBox Studio <span>v11.1</span></h1>
-      <p>Generador SVG para Brother ScanNCut · corte + vista cerrada</p>
-    </div>
-    <button class="ghost" onclick="resetear()">Reset</button>
-  </header>
-
-  <section class="grid">
-    <aside class="panel">
-      <label>Buscar plantilla</label>
-      <input id="busqueda" type="text" placeholder="Ej: taza, vela, jabón" oninput="filtrarModelos()">
-
-      <label>Categoría</label>
-      <select id="categoria" onchange="filtrarModelos()">
-        <option value="todas">Todas</option>
-        <option value="cajas">Cajas</option>
-        <option value="sobres">Sobres</option>
-        <option value="etiquetas">Etiquetas</option>
-        <option value="regalos">Regalos</option>
-      </select>
-
-      <label>Plantilla</label>
-      <select id="modelo"></select>
-
-      <label>Tamaño de hoja</label>
-      <select id="tamHoja" onchange="toggleCustomSheet()">
-        <option value="A4">A4 210 × 297 mm</option>
-        <option value="A3">A3 297 × 420 mm</option>
-        <option value="LETTER">Carta 216 × 279 mm</option>
-        <option value="LEGAL">Legal 216 × 356 mm</option>
-        <option value="12x12">12 × 12 pulgadas</option>
-        <option value="12x24">12 × 24 pulgadas</option>
-        <option value="CUSTOM">Personalizado</option>
-      </select>
-
-      <div id="customSheet" class="customSheet">
-        <label>Ancho hoja (mm)</label>
-        <input id="sheetW" type="number" value="210">
-        <label>Alto hoja (mm)</label>
-        <input id="sheetH" type="number" value="297">
-      </div>
-
-      <label>Ancho (mm)</label>
-      <input id="ancho" type="number" value="70">
-      <label>Alto (mm)</label>
-      <input id="alto" type="number" value="90">
-      <label>Profundidad / solapa (mm)</label>
-      <input id="prof" type="number" value="30">
-      <label>Grosor material (mm)</label>
-      <input id="material" type="number" value="0.3" step="0.1">
-      <label>Kerf / compensación corte (mm)</label>
-      <input id="kerf" type="number" value="0" step="0.05">
-
-      <button class="primary" onclick="generarPlantilla()">Generar SVG</button>
-      <div id="info" class="info">Negro = corte · Rojo punteado = pliegue.</div>
-    </aside>
-
-    <section class="preview">
-      <div class="previewTop">
-        <h2>Vista previa</h2>
-        <span id="estado">Listo</span>
-      </div>
-
-      <div class="previewGrid">
-        <div>
-          <h3>Plantilla de corte</h3>
-          <div id="resultado" class="resultado">
-            <p class="empty">Elegí una plantilla y tocá generar.</p>
-          </div>
-        </div>
-
-        <aside class="closedPanel">
-          <h3>Vista cerrada</h3>
-          <div id="vistaCerrada" class="vistaCerrada">
-            <p class="emptySmall">Cuando generes, acá se verá la caja o sobre cerrado.</p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  </section>
-</main>
-
-<script src="autolayout.js?v=111"></script>
-<script src="svg.js?v=111"></script>
-<script src="modelos.js?v=111"></script>
-<script src="preview3d.js?v=111"></script>
-<script src="exportar.js?v=111"></script>
-<script src="app.js?v=111"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>CutBox Studio v12</title><link rel="stylesheet" href="style.css"></head><body>
+<main class="app"><header class="hero"><div><h1>CutBox Studio <span>v12 Motor Pro</span></h1><p>Packaging · SVG · hojas múltiples · vista cerrada · unidades por hoja</p></div><button class="ghost" onclick="resetear()">Reset</button></header>
+<section class="tabs"><button class="tab active">📦 Packaging</button><button class="tab disabled">🖼️ Imágenes</button><button class="tab disabled">✂️ Corte</button><button class="tab disabled">📚 Biblioteca</button></section>
+<section class="grid"><aside class="panel">
+<label>Buscar plantilla</label><input id="busqueda" type="text" placeholder="Ej: taza, vela, jabón" oninput="filtrarModelos()">
+<label>Categoría</label><select id="categoria" onchange="filtrarModelos()"><option value="todas">Todas</option><option value="cajas">Cajas</option><option value="sobres">Sobres</option><option value="etiquetas">Etiquetas</option><option value="regalos">Regalos</option></select>
+<label>Plantilla</label><select id="modelo"></select>
+<label>Tamaño de hoja</label><select id="tamHoja" onchange="toggleCustomSheet()"><option value="A4">A4 210 × 297 mm</option><option value="A3">A3 297 × 420 mm</option><option value="LETTER">Carta 216 × 279 mm</option><option value="LEGAL">Legal 216 × 356 mm</option><option value="12x12">12 × 12 pulgadas</option><option value="12x24">12 × 24 pulgadas</option><option value="CUSTOM">Personalizado</option></select>
+<div id="customSheet" class="customSheet"><label>Ancho hoja (mm)</label><input id="sheetW" type="number" value="210"><label>Alto hoja (mm)</label><input id="sheetH" type="number" value="297"></div>
+<label>Margen de seguridad (mm)</label><input id="margen" type="number" value="8">
+<label>Ancho producto (mm)</label><input id="ancho" type="number" value="70"><label>Alto producto (mm)</label><input id="alto" type="number" value="90"><label>Profundidad / solapa (mm)</label><input id="prof" type="number" value="30">
+<label>Grosor material (mm)</label><input id="material" type="number" value="0.3" step="0.1"><label>Kerf / compensación corte (mm)</label><input id="kerf" type="number" value="0" step="0.05">
+<button class="primary" onclick="generarPlantilla()">Generar SVG</button><div id="info" class="info">Negro = corte · Rojo punteado = pliegue.</div></aside>
+<section class="preview"><div class="previewTop"><h2>Vista previa</h2><span id="estado">Listo</span></div><div class="previewGrid"><div><h3>Plantilla de corte</h3><div id="resultado" class="resultado"><p class="empty">Elegí una plantilla y tocá generar.</p></div></div><aside class="closedPanel"><h3>Vista cerrada</h3><div id="vistaCerrada" class="vistaCerrada"><p class="emptySmall">Cuando generes, acá se verá la caja o sobre cerrado.</p></div><div id="datosProduccion" class="productionBox"><b>Datos de producción</b><p>Generá una plantilla para ver unidades por hoja, uso y advertencias.</p></div></aside></div></section></section></main>
+<script src="autolayout.js?v=12"></script><script src="svg.js?v=12"></script><script src="modelos.js?v=12"></script><script src="preview3d.js?v=12"></script><script src="exportar.js?v=12"></script><script src="app.js?v=12"></script></body></html>
