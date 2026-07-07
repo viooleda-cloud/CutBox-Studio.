@@ -1,5 +1,8 @@
-function nombreSeguro(nombre){return String(nombre||"plantilla_cutbox").toLowerCase().replaceAll(" ","_").replace(/[^a-z0-9_\-]/g,"")}
+function nombreSeguro(nombre){
+  return String(nombre||"plantilla_cutbox").toLowerCase().replaceAll(" ","_").replace(/[^a-z0-9_\-]/g,"")
+}
 let ultimaProduccion=null;
+
 function calcProduccion(ev,totalW,totalH){
  const cantidad=Math.max(1,Number(document.getElementById("cantidad")?.value||1));
  const precioHoja=Math.max(0,Number(document.getElementById("precioHoja")?.value||0));
@@ -12,7 +15,25 @@ function calcProduccion(ev,totalW,totalH){
  const tiempoTotal=(hojas*tCorte)+(cantidad*tArmado);
  return{cantidad,precioHoja,porHoja,hojas,costoTotal,costoUnidad,tiempoTotal,tCorte,tArmado,totalW,totalH,ev};
 }
-function money(v){return Number(v||0).toLocaleString("es-AR",{maximumFractionDigits:2})}
+
+function money(v){
+  return Number(v||0).toLocaleString("es-AR",{maximumFractionDigits:2})
+}
+
+function svgZoomPlantilla(svg,totalW,totalH){
+  const s=getSheetSize();
+  const pad=12;
+  const x=Math.max(0,(s.w-totalW)/2-pad);
+  const y=Math.max(0,(s.h-totalH)/2-pad);
+  const w=Math.min(s.w,totalW+pad*2);
+  const h=Math.min(s.h,totalH+pad*2);
+  let out=svg;
+  out=out.replace(/width="[^"]*"/,'width="100%"');
+  out=out.replace(/height="[^"]*"/,'height="auto"');
+  out=out.replace(/viewBox="[^"]*"/,`viewBox="${x} ${y} ${w} ${h}"`);
+  return out;
+}
+
 function actualizarProduccion(ev,totalW,totalH){
  const p=calcProduccion(ev,totalW,totalH); ultimaProduccion=p;
  const box=document.getElementById("datosProduccion"); if(!box)return;
@@ -25,9 +46,27 @@ function actualizarProduccion(ev,totalW,totalH){
  <p><b>Costo total:</b> ${money(p.costoTotal)} · <b>unidad:</b> ${money(p.costoUnidad)}</p>
  <p><b>Tiempo estimado:</b> ${Math.round(p.tiempoTotal)} min</p>`;
 }
+
 function mostrarSVG(data,nombreArchivo){
- let svg=data.svg||data,totalW=Number(data.totalW||0),totalH=Number(data.totalH||0),ev=evaluarHoja(totalW,totalH),nombre=nombreSeguro(nombreArchivo);
- document.getElementById("resultado").innerHTML=svg+`<br><a class="descarga" download="${nombre}.svg" href="data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}">📥 Descargar SVG</a><div class="info ${ev.fits?'ok':'warn'}"><b>${ev.fits?(ev.rotate?'Entra mejor rotado':'Entra en hoja'):'No entra en la hoja seleccionada'}</b><br>Hoja: ${ev.sheet.w} x ${ev.sheet.h} mm<br>Plantilla: ${Math.round(totalW*10)/10} x ${Math.round(totalH*10)/10} mm<br>Unidades por hoja: ${ev.units}<br>Uso: ${ev.usage}% · Desperdicio: ${ev.waste}%</div>`;
+ let svg=data.svg||data;
+ let totalW=Number(data.totalW||0);
+ let totalH=Number(data.totalH||0);
+ let ev=evaluarHoja(totalW,totalH);
+ let nombre=nombreSeguro(nombreArchivo);
+ let previewSvg=svgZoomPlantilla(svg,totalW,totalH);
+
+ document.getElementById("resultado").innerHTML=
+ previewSvg+
+ `<br><a class="descarga" download="${nombre}.svg" href="data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}">📥 Descargar SVG</a>
+ <div class="info ${ev.fits?'ok':'warn'}">
+ <b>${ev.fits?(ev.rotate?'Entra mejor rotado':'Entra en hoja'):'No entra en la hoja seleccionada'}</b><br>
+ Hoja: ${ev.sheet.w} x ${ev.sheet.h} mm<br>
+ Plantilla: ${Math.round(totalW*10)/10} x ${Math.round(totalH*10)/10} mm<br>
+ Unidades por hoja: ${ev.units}<br>
+ Uso: ${ev.usage}% · Desperdicio: ${ev.waste}%<br>
+ <small>Vista previa ampliada. El SVG descargado conserva la hoja completa.</small>
+ </div>`;
+
  document.getElementById("estado").textContent=ev.fits?"OK":"Revisar tamaño";
  actualizarProduccion(ev,totalW,totalH);
 }
